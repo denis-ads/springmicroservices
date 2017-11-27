@@ -13,6 +13,7 @@ import com.itemsharing.itemservice.util.UserContextHolder;
 
 @Component
 public class UserRestTemplateClient {
+
 	@Autowired
 	private OAuth2RestTemplate oAuth2RestTemplate;
 	

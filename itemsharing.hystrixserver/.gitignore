@@ -1,0 +1,20 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+.classpath
+.project
+.settings
+bin
+build
+target
+.springBeans
+.factorypath

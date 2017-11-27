@@ -18,6 +18,8 @@ import com.itemsharing.itemservice.repository.ItemRepository;
 import com.itemsharing.itemservice.service.ItemService;
 import com.itemsharing.itemservice.service.UserService;
 import com.itemsharing.itemservice.util.UserContextHolder;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -95,22 +97,23 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-//	@HystrixCommand(
-//			fallbackMethod = "buildFallbackUser",
-//			threadPoolKey = "itemByUserThreadPool",
-//			threadPoolProperties = {
-//					@HystrixProperty(name="coreSize", value = "30"),  
+	@HystrixCommand
+	(
+			fallbackMethod = "buildFallbackUser",
+			threadPoolKey = "itemByUserThreadPool",
+			threadPoolProperties = {
+					@HystrixProperty(name="coreSize", value = "30"),  
 //					//(requests per second at peak when the service is healthy * 99th percentile latency in seconds) + small amount of extra threads for overhead
-//					@HystrixProperty(name="maxQueueSize", value="10")
-//			}
-//	)
+					@HystrixProperty(name="maxQueueSize", value="10")
+			}
+	)
 	public User getUserByUsername(String username) {
 //		return userService.findByUsername(username);
 //		randomlyRunLong();
 		
 		LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		
-//		return userFeignClient.getUserByUsername(username);
+		//return userFeignClient.getUserByUsername(username);
 		return userRestTemplateClient.getUser(username);
 	}
 	

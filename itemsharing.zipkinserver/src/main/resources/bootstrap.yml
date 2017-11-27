@@ -2,8 +2,8 @@ spring:
   application:
     name: zipkinservice
   profiles:
-    active:
-      default
+    active: default
   cloud:
     config:
-      uri: http://54.172.185.62:8888
+      enabled: true
+      uri: http://localhost:8888

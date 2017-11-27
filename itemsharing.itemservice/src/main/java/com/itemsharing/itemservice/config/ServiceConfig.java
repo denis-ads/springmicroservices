@@ -1,4 +1,4 @@
-package com.itemsharing.authorizationserver.config;
+package com.itemsharing.itemservice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

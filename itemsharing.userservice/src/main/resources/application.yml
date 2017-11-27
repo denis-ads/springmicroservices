@@ -11,17 +11,17 @@
 #  datasource:
 #    url: "jdbc:mysql://localhost:3306/itemsharingdatabase"
 #    username: "root"
-#    password: "Rochester24"
+#    password: "mysql123"
 #    testWhileIdle: "true"
 #    validationQuery: "SELECT 1"
-#    
+    
 #security:
 #  basic:
 #    enabled: false
-#    
+    
 #server:
 #  port: 8081
-# 
+ 
 
 #security:
 # oauth2:

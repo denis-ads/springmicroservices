@@ -3,8 +3,9 @@
   <parent>
     <groupId>com.itemsharing</groupId>
     <artifactId>itemsharing</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
+  
   <groupId>com.itemsharing.zipkinserver</groupId>
   <packaging>jar</packaging>
   <artifactId>itemsharing.zipkinserver</artifactId>
@@ -19,19 +20,12 @@
 		<docker.image.tag>latest</docker.image.tag>
 	</properties>
   
-  <dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
   
   <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>io.zipkin.java</groupId>
 			<artifactId>zipkin-autoconfigure-ui</artifactId>

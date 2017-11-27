@@ -10,12 +10,13 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-//import com.itemsharing.authorizationserver.config.ServiceConfig;
+import com.itemsharing.authorizationserver.config.ServiceConfig;
 
 @Configuration
 public class JWTTokenStoreConfig {
-//	@Autowired
-//	private ServiceConfig serviceConfig;
+	
+	@Autowired
+	private ServiceConfig serviceConfig;
 	
 	@Bean
 	public TokenStore tokenStore() {
@@ -35,8 +36,8 @@ public class JWTTokenStoreConfig {
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//		converter.setSigningKey(serviceConfig.getJwtSigningKey());
-		converter.setSigningKey("345345fsdgsf5345");
+		converter.setSigningKey(serviceConfig.getJwtSigningKey());
+		//converter.setSigningKey("345345fsdgsf5345");
 		
 		return converter;
 	}
