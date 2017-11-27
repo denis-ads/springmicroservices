@@ -40,6 +40,7 @@
 		<module>itemsharing.zuulserver</module>
 		<module>itemsharing.authorizationserver</module>
 		<module>itemsharing.zipkinserver</module>
+		<module>itemsharing.hystrixserver</module>
 	</modules>
 
 	<dependencyManagement>
