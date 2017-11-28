@@ -24,8 +24,9 @@
 		<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
 		<!--  
 		<spring.cloud.version>Camden.SR5</spring.cloud.version>
-		-->
 		<spring.cloud.version>Dalston.SR4</spring.cloud.version>
+		-->
+		<spring.cloud.version>Edgware.RELEASE</spring.cloud.version>
 	</properties>
 	
 	<modules>
