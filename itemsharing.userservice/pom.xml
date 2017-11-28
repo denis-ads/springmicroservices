@@ -112,6 +112,17 @@
             <artifactId>spring-boot-starter-integration</artifactId>
             <scope>compile</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>

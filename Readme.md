@@ -38,7 +38,11 @@ http://localhost:9411/zipkin/
 
 docker build -t rabbitmq --file `pwd`/Dockerfile `pwd`
 
-docker run -p 0.0.0.0:5672:5672 --name rabbitmq -d rabbitmq
+http://localhost:8080//hystrix
+Hystrix Stream: http://localhost:8989
 
-5672:5672
+
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672  rabbitmq:3-management
+
+http://localhost:15672/
 

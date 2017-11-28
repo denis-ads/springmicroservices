@@ -1,24 +1,13 @@
 spring:
-  profiles:
-    active: dev
   application:
     name: hystrixserver
-
----
-spring:
-  profiles: dev
   cloud:
     config:
       uri: http://localhost:8888
       fail-fast: true
 
----
-spring:
-  profiles: docker
-  cloud:
-    config:
-      uri: http://config:8888
-      fail-fast: true
-      username: user
-      password: ${CONFIG_SERVICE_PASSWORD}
-      
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
