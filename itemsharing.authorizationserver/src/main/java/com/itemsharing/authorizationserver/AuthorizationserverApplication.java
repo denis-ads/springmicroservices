@@ -1,5 +1,6 @@
 package com.itemsharing.authorizationserver;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -24,6 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 //@EnableJpaRepositories
 public class AuthorizationserverApplication {
 	
+    @RequestMapping(value = "/current", method = RequestMethod.GET)
+    public Principal getUser(Principal principal) {
+        return principal;
+    }
+    
 	@RequestMapping(value = "/user", produces = "application/json")
 	public Map<String, Object> user (OAuth2Authentication user) {
 		Map<String, Object> userInfo = new HashMap<>();

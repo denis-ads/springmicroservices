@@ -15,6 +15,7 @@ public class JWTTokenEnhancer implements TokenEnhancer{
 		Map<String, Object> additionalInfo = new HashMap<>();
 		String userId = "dummy id";
 		additionalInfo.put("userId", userId);
+		additionalInfo.put("denis", "denis123");
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
 		
 		return accessToken;
