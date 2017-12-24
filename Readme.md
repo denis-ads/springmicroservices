@@ -60,7 +60,9 @@ mvn clean package docker:build
 
 docker build -t mysql --file `pwd`/Dockerfile `pwd`
 
-
+docker run --name="logspout" \
+	gliderlabs/logspout \
+	syslog+tls://logs.papertrailapp.com:19851
 
 
 docker run --name="logspout" \
@@ -85,13 +87,6 @@ docker run --name authorizationservice -i -t --rm -p 8901:8901 -h authorizations
 docker run --name itemservice -i -t --rm -p 8082:8082 -h itemservice --net microservicesNet -d denis.apolinario/itemservice
 docker run --name userservice -i -t --rm -p 8081:8081 -h userservice --net microservicesNet -d denis.apolinario/userservice
 
-
-
-
-docker run --name some-app --link some-mysql:mysql -d application-that-uses-mysql
-
- 
-
 https://hub.docker.com/
 docker login
 denisapolinario
@@ -99,15 +94,7 @@ Senha: padrao
 
 
 mvn clean package docker:build
-docker run -p 8761:8761 denis.apolinario/eurekaservice -d
 docker tag eurekaservice denis.apolinario/eurekaservice
 docker push denis.apolinario/eurekaservice
-docker-compose -f docker-compose.yml up -d
 docker-compose down
-
-
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
-
-
-
---link some-mysql:mysql
