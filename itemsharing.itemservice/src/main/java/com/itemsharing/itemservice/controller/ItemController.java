@@ -22,7 +22,7 @@ import com.itemsharing.itemservice.util.UserContextHolder;
 @RequestMapping("/v1/item")
 public class ItemController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ItemController.class);
 
 	@Autowired
 	private ItemService itemService;
@@ -37,20 +37,22 @@ public class ItemController {
 		return itemService.addItemByUser(item, username);
 	}
 	
-	@RequestMapping("/itemsByUser")
-	public List<Item> getAllItemsByUser() {
-		String username = "jadams";
+	@RequestMapping("/itemsByUser/{username}")
+	public List<Item> getAllItemsByUser(@PathVariable String username) {
+		//String username = "jadams";
 		
 		return itemService.getItemsByUsername(username);
 	}
 	
 	@RequestMapping("/all")
 	public List<Item> getAllItems() {
+	    LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		return itemService.getAllItems();
 	}
 	
 	@RequestMapping("/{id}")
 	public Item getItemById(@PathVariable Long id) {
+	    LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		return itemService.getItemById(id);
 	}
 	
@@ -67,7 +69,7 @@ public class ItemController {
 	
 	@RequestMapping("/user/{username}")
 	public User getUserByUsername(@PathVariable String username) {
-		logger.debug("ItemServiceController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+	    LOG.debug("ItemServiceController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		
 		return itemService.getUserByUsername(username);
 	}

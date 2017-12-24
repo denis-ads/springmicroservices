@@ -40,8 +40,8 @@ public class ItemServiceImpl implements ItemService{
 	
 	@Override
 	public Item addItemByUser(Item item, String username) {
-		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
-		Item localItem = itemRepository.findByName(item.getName());
+	    LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+	    Item localItem = itemRepository.findByName(item.getName());
 		
 		if(localItem != null) {
 			LOG.info("Item with name {} already exists. Nothing will be done.", item.getName());
@@ -60,14 +60,16 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public List<Item> getAllItems() {
+
 		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		return (List<Item>) itemRepository.findAll();
 	}
 
 	@Override
 	public List<Item> getItemsByUsername(String username) {
-		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
-		User user = userService.findByUsername(username);
+
+		LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+	    User user = userService.findByUsername(username);
 		
 		return (List<Item>) itemRepository.findByUser(user);
 	}
@@ -75,6 +77,7 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public Item getItemById(Long id) {
 		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+
 		return itemRepository.findOne(id);
 	}
 
@@ -96,7 +99,8 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void deleteItemById(Long id) {
-		itemRepository.delete(id);
+	    LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+	    itemRepository.delete(id);
 	}
 
 	@Override

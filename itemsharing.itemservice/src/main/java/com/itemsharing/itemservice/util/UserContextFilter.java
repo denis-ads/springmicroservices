@@ -23,7 +23,6 @@ public class UserContextFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain ) throws IOException, ServletException {
 		
-		System.out.println("denis2");
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		
 //		String correlationId = httpServletRequest.getHeader(UserContext.CORRELATION_ID);
