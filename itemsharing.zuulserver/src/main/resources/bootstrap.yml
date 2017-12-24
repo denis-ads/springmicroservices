@@ -1,12 +1,29 @@
 spring:
+  profiles:
+    active: local
   application:
     name: zuulservice
-  profiles:
-    active: 
-      default
-  zipkin:
-    baseUrl: http://localhost:9411
+encrypt:
+  key: IMSYMMETRIC
+signing:
+  key: 345345fsdgsf5345
+ #security:
+ #  basic:
+ #    enabled: false
+---
+spring:
+  profiles: local
   cloud:
     config:
-#      enabled: false
       uri: http://localhost:8888
+zipkin:
+  baseUrl: http://localhost:9411
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://configservice:8888
+zipkin:
+    baseUrl: http://zipkinservice:9411

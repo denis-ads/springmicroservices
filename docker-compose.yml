@@ -1,0 +1,69 @@
+version: '3.3'
+services:
+  configservice:
+    image: denis.apolinario/configservice
+    #mem_limit: 1073741824
+    ports:
+       - "8888:8888"
+    environment:
+      ENCRYPT_KEY: "IMSYMMETRIC"
+
+  logspout:
+    image: gliderlabs/logspout
+    command: syslog://logs6.papertrailapp.com:19851
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  itemsharing.eurekaserver:
+    image: denis.apolinario/eurekaservice
+    #mem_limit: 1073741824
+    ports:
+      - "8761:8761"
+
+  zipkinservice:
+    image: denis.apolinario/zipkinservice
+    #mem_limit: 1073741824
+    ports:
+       - "9411:9411"
+    environment:
+      CONFIGSERVER_URI: "http://configservice:8888"
+
+  zuulservice:
+    image: denis.apolinario/zuulservice
+    #mem_limit: 1073741824
+    ports:
+       - "5555:5555"
+    environment:
+      CONFIGSERVER_URI: "http://configservice:8888"
+      ZIPKINSERVER_URI: "http://zipkinservice:9411"
+
+  authorizationservice:
+    image: denis.apolinario/authorizationservice
+    #mem_limit: 1073741824
+    ports:
+      - "8901:8901"
+    environment:
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      CONFIGSERVER_URI: "http://configservice:8888"
+      ZIPKINSERVER_URI: "http://zipkinservice:9411"
+
+  itemservice:
+    image: denis.apolinario/itemservice
+    #mem_limit: 1073741824
+    ports:
+       - "8082:8082"
+    environment:
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      CONFIGSERVER_URI: "http://configservice:8888"
+      ZIPKINSERVER_URI: "http://zipkinservice:9411"
+
+  userservice:
+    image: denis.apolinario/userservice
+    #mem_limit: 1073741824
+    ports:
+       - "8081:8081"
+    environment:
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      CONFIGSERVER_URI: "http://configservice:8888"
+      ZIPKINSERVER_URI: "http://zipkinservice:9411"
+

@@ -1,5 +1,5 @@
   configservice:
-    image: raydeng83/configservice
+    image: denis.apolinario/configservice
     mem_limit: 1073741824
     ports:
        - "8888:8888"

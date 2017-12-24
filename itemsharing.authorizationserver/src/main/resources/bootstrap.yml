@@ -2,8 +2,25 @@ spring:
   application:
     name: authorizationservice
   profiles:
-    active:
-      default
+    active: local
+
+encrypt:
+  key: IMSYMMETRIC
+signing:
+  key: 345345fsdgsf5345
+---
+spring:
+  profiles: local
+  zipkin:
+    baseUrl: http://localhost:9411
   cloud:
     config:
       uri: http://localhost:8888
+---
+spring:
+  profiles: docker
+  zipkin:
+    baseUrl: http://zipkinservice:9411
+  cloud:
+    config:
+      uri: http://configservice:8888

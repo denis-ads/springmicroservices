@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class SecurityConfig extends ResourceServerConfigurerAdapter{
 
 	private static final String[] PUBLIC_MATCHERS = {
+			"/info", "/health", "/metrics", "/dump", "/trace", "/heapdump", "/loggers"
 			
 	};
 	

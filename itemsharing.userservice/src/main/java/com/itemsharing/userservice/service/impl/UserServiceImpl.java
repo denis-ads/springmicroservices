@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.itemsharing.userservice.util.UserContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User createUser(User user) {
+		LOG.debug("UserService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+
 		User localUser = userRepository.findByUsername(user.getUsername());
 		
 		if (localUser != null) {

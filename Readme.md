@@ -46,3 +46,68 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 http://localhost:15672/
 
+
+####construir container docker com plugin maven
+#caso de algum problema
+export DOCKER_HOST=unix:///private/var/tmp/docker.sock
+ou 
+export DOCKER_HOST=unix:///var/run/docker.sock mvn clean package docker:build
+#####
+
+entrar no projeto itemsaring.eurekaserver
+mvn clean package docker:build
+
+
+docker build -t mysql --file `pwd`/Dockerfile `pwd`
+
+
+
+
+docker run --name="logspout" \
+	--volume=/var/run/docker.sock:/var/run/docker.sock \
+	gliderlabs/logspout \
+	syslog+tls://logs.papertrailapp.com:19851
+
+export ZIPKINSERVER_URI=zipkinservice 
+export CONFIGSERVER_URI=configservice
+export ENCRYPT_KEY=IMSYMMETRIC
+
+
+docker network create --subnet=172.18.0.0/16 microservicesNet
+
+docker run --name mysql -i -t --rm -p 3306:3306 -h mysql --net microservicesNet -e MYSQL_ROOT_PASSWORD=mysql123 -e MYSQL_DATABASE=itemsharingdatabase -d mysql:latest
+
+docker run --name configservice -i -t --rm -p 8888:8888 -h configservice --net microservicesNet -d denis.apolinario/configservice 
+docker run --name eurekaservice -i -t --rm -p 8761:8761 -h eurekaservice --net microservicesNet -d denis.apolinario/eurekaservice
+docker run --name zipkinservice -i -t --rm -p 9411:9411 -h zipkinservice --net microservicesNet -d denis.apolinario/zipkinservice
+docker run --name zuulservice  -i -t --rm  -p 5555:5555 -h zuulservice --net microservicesNet -d denis.apolinario/zuulservice
+docker run --name authorizationservice -i -t --rm -p 8901:8901 -h authorizationservice --net microservicesNet -d denis.apolinario/authorizationservice
+docker run --name itemservice -i -t --rm -p 8082:8082 -h itemservice --net microservicesNet -d denis.apolinario/itemservice
+docker run --name userservice -i -t --rm -p 8081:8081 -h userservice --net microservicesNet -d denis.apolinario/userservice
+
+
+
+
+docker run --name some-app --link some-mysql:mysql -d application-that-uses-mysql
+
+ 
+
+https://hub.docker.com/
+docker login
+denisapolinario
+Senha: padrao
+
+
+mvn clean package docker:build
+docker run -p 8761:8761 denis.apolinario/eurekaservice -d
+docker tag eurekaservice denis.apolinario/eurekaservice
+docker push denis.apolinario/eurekaservice
+docker-compose -f docker-compose.yml up -d
+docker-compose down
+
+
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+
+
+
+--link some-mysql:mysql

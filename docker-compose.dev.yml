@@ -1,0 +1,58 @@
+version: '3.3'
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123
+      MYSQL_DATABASE: itemsharingdatabase
+
+  #adminer:
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8089:8089
+
+
+  configservice:
+    build: itemsharing.configserver
+    ports:
+      - 8888:8888
+
+  eurekaserver:
+    build: itemsharing.eurekaserver
+
+  zuulservice:
+    build: itemsharing.zuulserver
+
+  zipkinservice:
+      build: itemsharing.zipkinserver
+
+  authorizationservice:
+    build: itemsharing.authorizationserver
+    ports:
+      - 8901:8901
+
+  #auth-mongodb:
+  #  build: mongodb
+  #  ports:
+  #    - 25000:27017
+
+  itemservice:
+    build: itemsharing.itemservice
+    ports:
+      - 8080:8080
+
+  #account-mongodb:
+  #  build: mongodb
+  #  ports:
+  #    - 26000:27017
+
+  #monitoring:
+  #  build: monitoring
+
+  userservice:
+    build: itemsharing.userservice
+    ports:
+      - 8081:8081

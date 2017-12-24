@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<start-class>com.itemsharing.userservice.UserserviceApplication</start-class>
-		<docker.image.name>userservice</docker.image.name>
+		<docker.image.name>denis.apolinario/userservice</docker.image.name>
 		<docker.image.tag>latest</docker.image.tag>
 	</properties>
 
@@ -93,7 +93,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- hystrix denis -->
+		<!-- hystrix denis
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -112,7 +112,7 @@
             <artifactId>spring-boot-starter-integration</artifactId>
             <scope>compile</scope>
         </dependency>
-        
+        -->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>

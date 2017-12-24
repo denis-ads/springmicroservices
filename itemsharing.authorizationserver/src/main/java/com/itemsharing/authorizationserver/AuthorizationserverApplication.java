@@ -6,6 +6,9 @@ import java.util.Map;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -23,7 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(basePackages = {"com.itemsharing.authorizationserver"})
 //@EnableJpaRepositories
 public class AuthorizationserverApplication {
-	
+
+	//spring.sleuth.sampler.percentage .5
+	@Bean
+	public Sampler defaultSampler() {
+		return new AlwaysSampler();
+	}
+
 	@RequestMapping(value = "/user", produces = "application/json")
 	public Map<String, Object> user (OAuth2Authentication user) {
 		Map<String, Object> userInfo = new HashMap<>();

@@ -1,9 +1,26 @@
 spring:
-  application:
-    name: zipkinservice
   profiles:
     active: default
+  application:
+    name: zipkinservice
+
+encrypt:
+  key: IMSYMMETRIC
+signing:
+  key: 345345fsdgsf5345
+ #security:
+ #  basic:
+ #    enabled: false
+---
+spring:
+  profiles: default
   cloud:
     config:
-      enabled: true
       uri: http://localhost:8888
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://configservice:8888

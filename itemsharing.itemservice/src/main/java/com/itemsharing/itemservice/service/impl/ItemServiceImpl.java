@@ -40,6 +40,7 @@ public class ItemServiceImpl implements ItemService{
 	
 	@Override
 	public Item addItemByUser(Item item, String username) {
+		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		Item localItem = itemRepository.findByName(item.getName());
 		
 		if(localItem != null) {
@@ -59,12 +60,13 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public List<Item> getAllItems() {
-		
+		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		return (List<Item>) itemRepository.findAll();
 	}
 
 	@Override
 	public List<Item> getItemsByUsername(String username) {
+		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		User user = userService.findByUsername(username);
 		
 		return (List<Item>) itemRepository.findByUser(user);
@@ -72,13 +74,14 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public Item getItemById(Long id) {
+		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		return itemRepository.findOne(id);
 	}
 
 	@Override
 	public Item updateItem(Item item) throws IOException {
 		Item localItem = getItemById(item.getId());
-		
+		LOG.debug("ItemService Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 		if(localItem == null) {
 			throw new IOException ("Item was not found.");
 		} else {

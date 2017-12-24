@@ -36,7 +36,8 @@ public class ItemserviceApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UserService userService;
-	
+
+	//spring.sleuth.sampler.percentage .5
 	@Bean
 	public Sampler defaultSampler() {
 		return new AlwaysSampler();

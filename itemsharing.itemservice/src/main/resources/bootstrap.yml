@@ -2,14 +2,27 @@ spring:
   application:
     name: itemservice
   profiles:
-    active: default
+     active: local
+encrypt:
+  key: IMSYMMETRIC
+signing:
+  key: 345345fsdgsf5345
+ #security:
+ #  basic:
+ #    enabled: false
+---
+spring:
+  profiles: local
   zipkin:
     baseUrl: http://localhost:9411
   cloud:
     config:
-      enabled: true
       uri: http://localhost:8888
-    
-security:
-  basic:
-    enabled: false
+---
+spring:
+  profiles: docker
+  zipkin:
+    baseUrl: http://zipkinservice:9411
+  cloud:
+    config:
+      uri: http://configservice:8888

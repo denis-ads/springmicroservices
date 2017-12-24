@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<start-class>com.itemsharing.itemservice.ItemserviceApplication</start-class>
-		<docker.image.name>itemservice</docker.image.name>
+		<docker.image.name>denis.apolinario/itemservice</docker.image.name>
 		<docker.image.tag>latest</docker.image.tag>
 
 	</properties>
@@ -108,7 +108,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
+		<!--
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -126,7 +126,7 @@
             <artifactId>spring-boot-starter-integration</artifactId>
             <scope>compile</scope>
         </dependency>
-        
+        -->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
@@ -178,6 +178,31 @@
 					</resources>
 				</configuration>
 			</plugin>
+			<!-- Esse plugin que deve ser utilizado
+			     Plugin acima descontinuado....
+			     https://github.com/spotify/dockerfile-maven
+			<plugin>
+  <groupId>com.spotify</groupId>
+  <artifactId>dockerfile-maven-plugin</artifactId>
+  <version>${dockerfile-maven-version}</version>
+  <executions>
+    <execution>
+      <id>default</id>
+      <goals>
+        <goal>build</goal>
+        <goal>push</goal>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <repository>spotify/foobar</repository>
+    <tag>${project.version}</tag>
+    <buildArgs>
+      <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+    </buildArgs>
+  </configuration>
+</plugin>
+-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

@@ -1,4 +1,7 @@
-FROM openjdk:8-jdk-alpine
+FROM anapsix/alpine-java:8_server-jre_unlimited
+
+MAINTAINER Denis Apolinario
+RUN export ENCRYPT_KEY=IMSYMMETRIC
 RUN apk update && apk upgrade && apk add netcat-openbsd
 RUN mkdir -p /usr/local/authorizationservice
 ADD @project.build.finalName@.jar /usr/local/authorizationservice

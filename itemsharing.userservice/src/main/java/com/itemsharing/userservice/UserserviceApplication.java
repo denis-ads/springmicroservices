@@ -24,12 +24,14 @@ import com.itemsharing.userservice.service.UserService;
 public class UserserviceApplication implements CommandLineRunner{
 	@Autowired
 	private UserService userService;
-	
+
+	//spring.sleuth.sampler.percentage .5
 	@Bean
 	public Sampler defaultSampler() {
 		return new AlwaysSampler();
 	}
-	
+
+
 	public static void main (String[] args) {
 		SpringApplication.run(UserserviceApplication.class, args);
 	}
