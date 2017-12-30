@@ -124,7 +124,16 @@
             <scope>compile</scope>
         </dependency>
     -->
-        <dependency>
+		<!--teste techprime-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+<!---->
+
+
+		<dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
             <scope>test</scope>

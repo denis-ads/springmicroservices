@@ -62,13 +62,15 @@ docker build -t mysql --file `pwd`/Dockerfile `pwd`
 
 docker run --name="logspout" \
 	gliderlabs/logspout \
-	syslog+tls://logs.papertrailapp.com:19851
+	syslog+tls://logs6.papertrailapp.com:12981
 
 
 docker run --name="logspout" \
 	--volume=/var/run/docker.sock:/var/run/docker.sock \
 	gliderlabs/logspout \
-	syslog+tls://logs.papertrailapp.com:19851
+	syslog+tls://logs6.papertrailapp.com:12981
+	
+	
 
 export ZIPKINSERVER_URI=zipkinservice 
 export CONFIGSERVER_URI=configservice
@@ -86,6 +88,10 @@ docker run --name zuulservice  -i -t --rm  -p 5555:5555 -h zuulservice --net mic
 docker run --name authorizationservice -i -t --rm -p 8901:8901 -h authorizationservice --net microservicesNet -d denis.apolinario/authorizationservice
 docker run --name itemservice -i -t --rm -p 8082:8082 -h itemservice --net microservicesNet -d denis.apolinario/itemservice
 docker run --name userservice -i -t --rm -p 8081:8081 -h userservice --net microservicesNet -d denis.apolinario/userservice
+
+
+descobrir service que esta usando a porta
+lsof -i:8901
 
 https://hub.docker.com/
 docker login

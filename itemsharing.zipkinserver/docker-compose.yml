@@ -7,6 +7,7 @@
       CONFIGSERVER_URI: "http://configservice:8888"
   logspout:
       image: gliderlabs/logspout
-      command: syslog://logs6.papertrailapp.com:19851
+      #command: syslog://logs6.papertrailapp.com:19851
+      command: syslog://logs6.papertrailapp.com:12981
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
