@@ -81,13 +81,13 @@ docker network create --subnet=172.18.0.0/16 microservicesNet
 
 docker run --name mysql -i -t --rm -p 3306:3306 -h mysql --net microservicesNet -e MYSQL_ROOT_PASSWORD=mysql123 -e MYSQL_DATABASE=itemsharingdatabase -d mysql:latest
 
-docker run --name configservice -i -t --rm -p 8888:8888 -h configservice --net microservicesNet -d denis.apolinario/configservice 
-docker run --name eurekaservice -i -t --rm -p 8761:8761 -h eurekaservice --net microservicesNet -d denis.apolinario/eurekaservice
-docker run --name zipkinservice -i -t --rm -p 9411:9411 -h zipkinservice --net microservicesNet -d denis.apolinario/zipkinservice
-docker run --name zuulservice  -i -t --rm  -p 5555:5555 -h zuulservice --net microservicesNet -d denis.apolinario/zuulservice
-docker run --name authorizationservice -i -t --rm -p 8901:8901 -h authorizationservice --net microservicesNet -d denis.apolinario/authorizationservice
-docker run --name itemservice -i -t --rm -p 8082:8082 -h itemservice --net microservicesNet -d denis.apolinario/itemservice
-docker run --name userservice -i -t --rm -p 8081:8081 -h userservice --net microservicesNet -d denis.apolinario/userservice
+docker run --name configservice -i -t --rm -p 8888:8888 -h configservice --net microservicesNet -d configservice 
+docker run --name eurekaservice -i -t --rm -p 8761:8761 -h eurekaservice --net microservicesNet -d eurekaservice
+docker run --name zipkinservice -i -t --rm -p 9411:9411 -h zipkinservice --net microservicesNet -d zipkinservice
+docker run --name zuulservice  -i -t --rm  -p 5555:5555 -h zuulservice --net microservicesNet -d zuulservice
+docker run --name authorizationservice -i -t --rm -p 8901:8901 -h authorizationservice --net microservicesNet -d authorizationservice
+docker run --name itemservice -i -t --rm -p 8082:8082 -h itemservice --net microservicesNet -d itemservice
+docker run --name userservice -i -t --rm -p 8081:8081 -h userservice --net microservicesNet -d userservice
 
 
 descobrir service que esta usando a porta
@@ -99,8 +99,46 @@ denisapolinario
 Senha: padrao
 
 
+$ docker login
+<enter user name and password for Docker Hub Repository>
+
+$ docker tag first-image {docker-hub-username}/{default-repo-folder-name}:first-image
+
+$ docker push {docker-hub-username}/{default-repo-folder-name}:first-image
+
 mvn clean package docker:build
-docker tag eurekaservice denis.apolinario/eurekaservice
-docker push denis.apolinario/eurekaservice
+
+docker tag configservice denisapolinario/configservice:1.0.0
+docker push denisapolinario/configservice:1.0.0
+
+docker tag eurekaservice denisapolinario/eurekaservice:1.0.0
+docker push denisapolinario/eurekaservice:1.0.0
+
+
+docker tag zipkinservice denisapolinario/zipkinservice:1.0.0
+docker push denisapolinario/zipkinservice:1.0.0
+
+docker tag zuulservice denisapolinario/zuulservice:1.0.0
+docker push denisapolinario/zuulservice:1.0.0
+
+docker tag authorizationservice denisapolinario/authorizationservice:1.0.0
+docker push denisapolinario/authorizationservice:1.0.0
+
+docker tag itemservice denisapolinario/itemservice:1.0.0
+docker push denisapolinario/itemservice:1.0.0
+
+docker tag userservice denisapolinario/userservice:1.0.0
+docker push denisapolinario/userservice:1.0.0
+
+
+
 docker-compose down
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+
+
+
+
+
+
+
+
