@@ -22,7 +22,7 @@ public class UserRestTemplateClient {
 	public User getUser(String username) {
 		logger.debug("In item service.getUser: {}", UserContextHolder.getContext().getCorrelationId());
 		
-		ResponseEntity<User> restExchange = oAuth2RestTemplate.exchange("http://zuulservice:5555/api/user/v1/user/{username}", HttpMethod.GET, null, User.class, username);
+		ResponseEntity<User> restExchange = oAuth2RestTemplate.exchange("http://zuulservice:5555/user/v1/user/{username}", HttpMethod.GET, null, User.class, username);
 		
 		return restExchange.getBody();
 	}

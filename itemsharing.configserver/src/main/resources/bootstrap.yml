@@ -9,7 +9,7 @@ spring:
       server:
         git:
           uri: https://github.com/denis-ads/config-repo
-          #uri: file:////Users/denisapolinario/ambienteDesenv/workspaceExemplos/config-repo
+          #uri: file:////Users/denisapolinario/ambienteDesenv/workspaceIntelij/config-repo
           #uri: file:////ambienteDesenv//workspaceSpring//config-repo
           #uri: C:\\\\ambienteDesenv\\\\workspaceSpring\\\\config-repo
           #username: springmicro
