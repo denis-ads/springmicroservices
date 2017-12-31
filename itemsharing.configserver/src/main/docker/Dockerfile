@@ -8,6 +8,8 @@ RUN apk update && apk upgrade && apk add netcat-openbsd
 RUN mkdir -p /usr/local/configservice
 ADD @project.build.finalName@.jar /usr/local/configservice
 ADD run.sh run.sh
-USER 1001
+
+RUN chown -R 1001:1001 run.sh
 RUN chmod +x run.sh
+USER 1001
 CMD ./run.sh
