@@ -30,14 +30,9 @@
 	</properties>
 	
 	<modules>
-		<!-- 
-		<module>userservice</module>
-		<module>itemservice</module>
-		 -->
 		<module>itemsharing.userservice</module>
 		<module>itemsharing.itemservice</module>
 		<module>itemsharing.configserver</module>
-		<module>itemsharing.eurekaserver</module>
 		<module>itemsharing.zuulserver</module>
 		<module>itemsharing.authorizationserver</module>
 		<module>itemsharing.zipkinserver</module>
