@@ -6,12 +6,12 @@ import java.util.Map;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableAuthorizationServer
-@EnableEurekaClient
+//@EnableEurekaClient
 @EnableResourceServer
 @ComponentScan(basePackages = {"com.itemsharing.authorizationserver"})
 //@EnableJpaRepositories

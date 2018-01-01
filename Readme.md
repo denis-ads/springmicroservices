@@ -108,27 +108,27 @@ $ docker push {docker-hub-username}/{default-repo-folder-name}:first-image
 
 mvn clean package docker:build
 
-docker tag configservice denisapolinario/configservice:1.0.0
-docker push denisapolinario/configservice:1.0.0
+docker tag configservice denisapolinario/configservice:1.0.1
+docker push denisapolinario/configservice:1.0.1
 
 docker tag eurekaservice denisapolinario/eurekaservice:1.0.0
 docker push denisapolinario/eurekaservice:1.0.0
 
 
-docker tag zipkinservice denisapolinario/zipkinservice:1.0.0
-docker push denisapolinario/zipkinservice:1.0.0
+docker tag zipkinservice denisapolinario/zipkinservice:1.0.1
+docker push denisapolinario/zipkinservice:1.0.1
 
-docker tag zuulservice denisapolinario/zuulservice:1.0.0
-docker push denisapolinario/zuulservice:1.0.0
+docker tag zuulservice denisapolinario/zuulservice:1.0.1
+docker push denisapolinario/zuulservice:1.0.1
 
-docker tag authorizationservice denisapolinario/authorizationservice:1.0.0
-docker push denisapolinario/authorizationservice:1.0.0
+docker tag authorizationservice denisapolinario/authorizationservice:1.0.1
+docker push denisapolinario/authorizationservice:1.0.1
 
-docker tag itemservice denisapolinario/itemservice:1.0.0
-docker push denisapolinario/itemservice:1.0.0
+docker tag itemservice denisapolinario/itemservice:1.0.1
+docker push denisapolinario/itemservice:1.0.1
 
-docker tag userservice denisapolinario/userservice:1.0.0
-docker push denisapolinario/userservice:1.0.0
+docker tag userservice denisapolinario/userservice:1.0.1
+docker push denisapolinario/userservice:1.0.1
 
 
 

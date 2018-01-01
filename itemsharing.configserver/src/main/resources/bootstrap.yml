@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/denis-ads/config-repo
+          uri: https://github.com/denis-ads/config-repo-openshift
           #uri: file:////Users/denisapolinario/ambienteDesenv/workspaceIntelij/config-repo
           #uri: file:////ambienteDesenv//workspaceSpring//config-repo
           #uri: C:\\\\ambienteDesenv\\\\workspaceSpring\\\\config-repo
